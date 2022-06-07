@@ -183,3 +183,7 @@ button:hover {
         width: auto;
     }
 }
+
+.flex {
+    display: flex;
+}

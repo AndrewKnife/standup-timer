@@ -2,6 +2,31 @@ const TIMER_MODES = {
     manual: "manual",
     auto: "auto"
 };
+const USER_ROLES = {
+    po: {
+        id: "po",
+        color: "background-image: linear-gradient(to right, rgba(202, 197, 49, 0.3), rgba(243, 249, 167, 0.3));"
+    },
+    qa: {
+        id: "qa",
+        color: "background-image: linear-gradient(to right, rgba(17, 153, 142, 0.3), rgba(56, 239, 125, 0.3));"
+    },
+    devops: {
+        id: "devops",
+        color: "background-image: linear-gradient(to right, rgba(195, 20, 50, 0.3), rgba(36, 11, 54, 0.3));"
+    },
+    be: {
+        id: "be",
+        color: "background-image: linear-gradient(to right, rgba(252, 74, 26, 0.3), rgba(247, 183, 51, 0.3));"
+    },
+    fe: {
+        id: "fe",
+        color: "background-image: linear-gradient(to right, rgba(127, 127, 213, 0.3), rgba(134, 168, 231, 0.3), rgba(145, 234, 228, 0.3));"
+    }
+};
+
+const audio = new Audio('./assets/sound-default.mp3');
+audio.volume = 0.1;
 
 //--You can control the variables in this area
 const USER_TIME = 35; // In Seconds, set how long can one person speak
@@ -10,81 +35,99 @@ const TIMER_MODE = TIMER_MODES.manual;
 const CRITICAL_TIME = 10; // When should bubble start pulsating
 const poList = [
     {
-        name: "Marius Lesnickas",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U01JM1WK7CL-fe9d4e25a0b9-512"
+        name: "Marius L",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U01JM1WK7CL-fe9d4e25a0b9-512",
+        role: USER_ROLES.po.id
     }, {
-        name: "Tomas Pakulis",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U03APBR882K-05b07585b245-512"
+        name: "Tomas P",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U03APBR882K-05b07585b245-512",
+        role: USER_ROLES.po.id
     }, {
-        name: "Kateryna Shevchenko",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U02L7J93J31-2ac80b461a65-512"
+        name: "Kateryna S",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U02L7J93J31-2ac80b461a65-512",
+        role: USER_ROLES.po.id
     },
 ]
 const qaList = [
     {
-        name: "Eglė Kasparaitytė",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U030J8TJ804-89ee2a84179d-512"
+        name: "Eglė K",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U030J8TJ804-89ee2a84179d-512",
+        role: USER_ROLES.qa.id
     }, {
-        name: "Ieva Mašalaitė",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U03HKLJ77M5-f59b45a6ea0f-512"
+        name: "Ieva M",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U03HKLJ77M5-f59b45a6ea0f-512",
+        role: USER_ROLES.qa.id
     }, {
-        name: "Agnė Gendrėnienė",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U01UJ5L0A4X-d72bbf455561-512"
+        name: "Agnė G",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U01UJ5L0A4X-d72bbf455561-512",
+        role: USER_ROLES.qa.id
     }
 ]
 const devopsList = [
     {
-        name: "Mindaugas Liutkauskas",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U032ZDV3D3J-6131bfeaa026-512"
+        name: "Mindaugas L",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U032ZDV3D3J-6131bfeaa026-512",
+        role: USER_ROLES.devops.id
     }
 ]
 const beList = [
     {
-        name: "Sandra Klezyte",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U03521389MM-ga30b025d858-512"
+        name: "Sandra K",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U03521389MM-ga30b025d858-512",
+        role: USER_ROLES.be.id
     },
     {
-        name: "Antanas Kiselis",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U02C15PCVEF-4253f19273d1-512"
+        name: "Antanas K",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U02C15PCVEF-4253f19273d1-512",
+        role: USER_ROLES.be.id
     },
     {
-        name: "Justinas Garipovas",
+        name: "Justinas G",
         special: true,
         src: "https://media.discordapp.net/attachments/855740759064182815/982291449708179466/unknown.png?width=907&height=609",
+        role: USER_ROLES.be.id
     },
     {
-        name: "Matas Dragūnas",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U02B75EKXPY-bb3291c1df7b-512"
+        name: "Matas D",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U02B75EKXPY-bb3291c1df7b-512",
+        role: USER_ROLES.be.id
     },
     {
-        name: "Tautvydas Karvelis",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U03DH29FN4E-b37acca90c5e-512"
+        name: "Tautvydas K",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U03DH29FN4E-b37acca90c5e-512",
+        role: USER_ROLES.be.id
     },
     {
-        name: "Vitas Micė",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U03DEUZ4JCQ-6fbd63f42e9a-512"
+        name: "Vitas M",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U03DEUZ4JCQ-6fbd63f42e9a-512",
+        role: USER_ROLES.be.id
     },
     {
-        name: "Vytenis Gelažius",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U01M3R1EK6J-be3057d7eb98-512"
+        name: "Vytenis G",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U01M3R1EK6J-be3057d7eb98-512",
+        role: USER_ROLES.be.id
     }
 ]
 const feList = [
     {
-        name: "Andrius Simanavičius",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U024V4GJLP8-15d3677005f8-512"
+        name: "Andrius S",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U024V4GJLP8-15d3677005f8-512",
+        role: USER_ROLES.fe.id
     },
     {
-        name: "Edmundas Ravdo",
-        src: "https://ca.slack-edge.com/T3V50P6MN-UL0T363S4-1a3f3ec2baea-512"
+        name: "Edmundas R",
+        src: "https://ca.slack-edge.com/T3V50P6MN-UL0T363S4-1a3f3ec2baea-512",
+        role: USER_ROLES.fe.id
     },
     {
-        name: "Karolis Kašys",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U019KV9PSTG-1218550f2afe-512"
+        name: "Karolis K",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U019KV9PSTG-1218550f2afe-512",
+        role: USER_ROLES.fe.id
     },
     {
-        name: "Lukas Laurinavičius",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U01U95116HM-7b84859101f5-512"
+        name: "Lukas L",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U01U95116HM-7b84859101f5-512",
+        role: USER_ROLES.fe.id
     }
 ]
 const peopleList = [
@@ -103,6 +146,11 @@ const buttonStartElement = document.getElementById("start");
 const userNameElement = document.getElementById("userName");
 const timerWrapperElement = document.getElementById("timerRounded");
 const timeInputElement = document.getElementById("timeInput");
+const userCardElement = document.getElementById("userCard");
+
+const soundInputElement = document.getElementById("soundInput");
+const colorsInputElement = document.getElementById("colorsInput");
+const catsInputElement = document.getElementById("catInput");
 
 const ALERT_CLASS_NAME = "blob-red";
 const ALERT_CLASS_NAME_SUPER = "blob-red-super";
@@ -111,6 +159,21 @@ let timeTracker = USER_TIME;
 let inputedTime = USER_TIME;
 let selectedPerson = peopleList[0];
 let hasBeenStarted = false;
+let soundPlayed = false;
+let isSoundEnabled = soundInputElement.checked;
+let areColorsEnabled = colorsInputElement.checked;
+let catsEnabled = catsInputElement.checked;
+
+soundInputElement.addEventListener('change', function () {
+    isSoundEnabled = this.checked
+});
+colorsInputElement.addEventListener('change', function () {
+    areColorsEnabled = this.checked
+});
+catsInputElement.addEventListener('change', function () {
+    catsEnabled = this.checked
+});
+
 
 const getTime = (seconds) => {
     if (TIMER_MODE === TIMER_MODES.manual) {
@@ -127,15 +190,25 @@ const checkAlert = () => {
     if (timeTracker > CRITICAL_TIME) {
         timerWrapperElement.classList.remove(ALERT_CLASS_NAME);
         timerWrapperElement.classList.remove(ALERT_CLASS_NAME_SUPER);
-    } else if(selectedPerson.special ){
+    } else if (selectedPerson.special) {
         timerWrapperElement.classList.add(ALERT_CLASS_NAME_SUPER);
     } else {
         timerWrapperElement.classList.add(ALERT_CLASS_NAME);
     }
 };
 
+const controlSound = (secLeft) => {
+    if (secLeft === 0) {
+        if (isSoundEnabled && !soundPlayed) {
+            audio.play();
+            soundPlayed = true;
+        }
+    }
+}
+
 const startTimer = () => {
     inputedTime = Number.parseInt(document.getElementById("timeInput").value);
+    selectPerson(0);
     setTimer()
     if (!hasBeenStarted) {
         hasBeenStarted = true;
@@ -144,6 +217,7 @@ const startTimer = () => {
             timerElement.innerHTML = newTime;
             timeTracker = newTime;
             checkAlert();
+            controlSound(newTime)
         }, 1000);
     } else {
         selectPerson(0);
@@ -184,16 +258,30 @@ const selectPerson = (personId) => {
     items[personId].classList.add("active");
     userNameElement.innerHTML = selectedPerson.name;
     setTimer();
-    if (selectedPerson.src) {
-        timerWrapperElement.style.backgroundImage = `url(${selectedPerson.src})`;
+    if (catsEnabled) {
+        timerWrapperElement.style.backgroundImage = `url(https://loremflickr.com/124/124?${selectedPerson.src})`;
     } else {
-        timerWrapperElement.style.backgroundImage = "";
+        if (selectedPerson.src) {
+            timerWrapperElement.style.backgroundImage = `url(${selectedPerson.src})`;
+        } else {
+            timerWrapperElement.style.backgroundImage = "";
+        }
     }
+
+    manageColors();
 };
 
 const scrollToElement = (liId) => {
     const element = peopleListElement.getElementsByTagName('li')[liId]
-    element.scrollIntoView({ behavior: 'auto' /*or smooth*/, block: 'center' });
+    element.scrollIntoView({behavior: 'auto' /*or smooth*/, block: 'center'});
+}
+
+const manageColors = () => {
+    if (areColorsEnabled && USER_ROLES[selectedPerson.role] && USER_ROLES[selectedPerson.role].color) {
+        userCardElement.style = USER_ROLES[selectedPerson.role].color
+    } else {
+        userCardElement.style = '';
+    }
 }
 
 const selectNextPerson = () => {
@@ -203,6 +291,9 @@ const selectNextPerson = () => {
     const idOfNext = idOfCurrent === peopleList.length - 1 ? 0 : idOfCurrent + 1;
     selectPerson(idOfNext);
     scrollToElement(idOfNext);
+
+    manageColors();
+    soundPlayed = false;
 };
 
 const setUpInputs = () => {
