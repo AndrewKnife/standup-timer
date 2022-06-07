@@ -16,15 +16,29 @@
 <div class="page">
     <div class="controls card">
         <div class="column">
+            <div class="flex">
+                <span class="label">Sound</span>
+                <input type="checkbox" id="soundInput" checked/>
+            </div>
+            <div class="flex">
+                <span class="label">Colors</span>
+                <input type="checkbox" id="colorsInput" checked/>
+            </div>
+            <div class="flex">
+                <span class="label">Cats?</span>
+                <input type="checkbox" id="catInput"/>
+            </div>
+        </div>
+        <div class="column">
             <span class="label">Time Input</span>
-            <input type="number" id="timeInput" />
+            <input type="number" id="timeInput"/>
         </div>
         <div>
             <button id="start">Start</button>
         </div>
     </div>
     <div class="wrapper mobile-single">
-        <div class="user card">
+        <div class="user card" id="userCard">
             <div class="timer-wrapper">
                 <div id="timerRounded" class="timer-rounded">
                 </div>
