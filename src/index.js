@@ -50,7 +50,7 @@ const beList = [
     {
         name: "Justinas Garipovas",
         special: true,
-        src: "https://media.discordapp.net/attachments/855740759064182815/982291449708179466/unknown.png?width=907&height=609"
+        src: "https://media.discordapp.net/attachments/855740759064182815/982291449708179466/unknown.png?width=907&height=609",
     },
     {
         name: "Matas Dragūnas",
@@ -191,12 +191,18 @@ const selectPerson = (personId) => {
     }
 };
 
+const scrollToElement = (liId) => {
+    const element = peopleListElement.getElementsByTagName('li')[liId]
+    element.scrollIntoView({ behavior: 'auto' /*or smooth*/, block: 'center' });
+}
+
 const selectNextPerson = () => {
     const idOfCurrent = peopleList
         .map((i) => i.name)
         .indexOf(selectedPerson.name);
     const idOfNext = idOfCurrent === peopleList.length - 1 ? 0 : idOfCurrent + 1;
     selectPerson(idOfNext);
+    scrollToElement(idOfNext);
 };
 
 const setUpInputs = () => {

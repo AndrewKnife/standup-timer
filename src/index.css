@@ -2,7 +2,6 @@
     max-width: 780px;
     margin: auto;
     font-family: Arial;
-    overflow: hidden;
 }
 
 .wrapper {
@@ -74,6 +73,8 @@ li:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: sticky;
+    top: 0;
     width: 50%;
 }
 
