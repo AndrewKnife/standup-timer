@@ -207,8 +207,8 @@ const controlSound = (secLeft) => {
 }
 
 const startTimer = () => {
-    console.log(!hasBeenStarted, 'aa')
     inputedTime = Number.parseInt(document.getElementById("timeInput").value);
+    selectPerson(0);
     setTimer()
     if (!hasBeenStarted) {
         hasBeenStarted = true;
