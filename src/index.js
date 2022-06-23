@@ -57,10 +57,6 @@ const qaList = [
         name: "Ieva M",
         src: "https://ca.slack-edge.com/T3V50P6MN-U03HKLJ77M5-f59b45a6ea0f-512",
         role: USER_ROLES.qa.id
-    }, {
-        name: "Agnė G",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U01UJ5L0A4X-d72bbf455561-512",
-        role: USER_ROLES.qa.id
     }
 ]
 const devopsList = [
@@ -150,10 +146,17 @@ const userCardElement = document.getElementById("userCard");
 
 const soundInputElement = document.getElementById("soundInput");
 const colorsInputElement = document.getElementById("colorsInput");
-const catsInputElement = document.getElementById("catInput");
+const imagesInputElement = document.getElementById("images");
 
 const ALERT_CLASS_NAME = "blob-red";
 const ALERT_CLASS_NAME_SUPER = "blob-red-super";
+
+const imageValues = {
+    cats: 'cats',
+    cats2: 'cats2',
+    corgis: 'corgis',
+    animals: 'animals',
+}
 
 let timeTracker = USER_TIME;
 let inputedTime = USER_TIME;
@@ -162,7 +165,7 @@ let hasBeenStarted = false;
 let soundPlayed = false;
 let isSoundEnabled = soundInputElement.checked;
 let areColorsEnabled = colorsInputElement.checked;
-let catsEnabled = catsInputElement.checked;
+let imagesOption = imagesInputElement.value;
 
 soundInputElement.addEventListener('change', function () {
     isSoundEnabled = this.checked
@@ -170,8 +173,8 @@ soundInputElement.addEventListener('change', function () {
 colorsInputElement.addEventListener('change', function () {
     areColorsEnabled = this.checked
 });
-catsInputElement.addEventListener('change', function () {
-    catsEnabled = this.checked
+imagesInputElement.addEventListener('change', function () {
+    imagesOption = this.value
 });
 
 
@@ -249,6 +252,12 @@ const generateList = () => {
     });
 };
 
+const getRandomInt = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 const selectPerson = (personId) => {
     selectedPerson = peopleList[personId];
     const items = document.querySelectorAll("li");
@@ -258,9 +267,19 @@ const selectPerson = (personId) => {
     items[personId].classList.add("active");
     userNameElement.innerHTML = selectedPerson.name;
     setTimer();
-    if (catsEnabled) {
-        timerWrapperElement.style.backgroundImage = `url(https://loremflickr.com/124/124?${selectedPerson.src})`;
-    } else {
+    if (imagesOption === imageValues.cats) {
+        timerWrapperElement.style.backgroundImage = `url(https://loremflickr.com/${getRandomInt(150,180)}/${getRandomInt(150,180)}?${selectedPerson.src})`;
+    }
+    if (imagesOption === imageValues.cats2) {
+        timerWrapperElement.style.backgroundImage = `url(http://placekitten.com/${getRandomInt(150,180)}/${getRandomInt(150,180)}?${selectedPerson.src})`;
+    }
+    if (imagesOption === imageValues.animals) {
+        timerWrapperElement.style.backgroundImage = `url(http://placeimg.com/${getRandomInt(150,180)}/${getRandomInt(150,180)}/animals?${selectedPerson.src})`;
+    }
+    if (imagesOption === imageValues.corgis) {
+        timerWrapperElement.style.backgroundImage = `url(http://placecorgi.com/${getRandomInt(150,180)}/${getRandomInt(150,180)}?${selectedPerson.src})`;
+    }
+    if(!imagesOption) {
         if (selectedPerson.src) {
             timerWrapperElement.style.backgroundImage = `url(${selectedPerson.src})`;
         } else {
