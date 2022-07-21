@@ -258,6 +258,8 @@ const getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+const getRandomString = () => (Math.random() + 1).toString(36).substring(7);
+
 const selectPerson = (personId) => {
     selectedPerson = peopleList[personId];
     const items = document.querySelectorAll("li");
@@ -268,16 +270,16 @@ const selectPerson = (personId) => {
     userNameElement.innerHTML = selectedPerson.name;
     setTimer();
     if (imagesOption === imageValues.cats) {
-        timerWrapperElement.style.backgroundImage = `url(https://loremflickr.com/${getRandomInt(150,180)}/${getRandomInt(150,180)}?${selectedPerson.src})`;
+        timerWrapperElement.style.backgroundImage = `url(https://loremflickr.com/${getRandomInt(150,180)}/${getRandomInt(150,180)}?${getRandomString()})`;
     }
     if (imagesOption === imageValues.cats2) {
-        timerWrapperElement.style.backgroundImage = `url(http://placekitten.com/${getRandomInt(150,180)}/${getRandomInt(150,180)}?${selectedPerson.src})`;
+        timerWrapperElement.style.backgroundImage = `url(http://placekitten.com/${getRandomInt(150,180)}/${getRandomInt(150,180)}?${getRandomString()})`;
     }
     if (imagesOption === imageValues.animals) {
-        timerWrapperElement.style.backgroundImage = `url(http://placeimg.com/${getRandomInt(150,180)}/${getRandomInt(150,180)}/animals?${selectedPerson.src})`;
+        timerWrapperElement.style.backgroundImage = `url(http://placeimg.com/${getRandomInt(150,180)}/${getRandomInt(150,180)}/animals?${getRandomString()})`;
     }
     if (imagesOption === imageValues.corgis) {
-        timerWrapperElement.style.backgroundImage = `url(http://placecorgi.com/${getRandomInt(150,180)}/${getRandomInt(150,180)}?${selectedPerson.src})`;
+        timerWrapperElement.style.backgroundImage = `url(http://placedog.net/${getRandomInt(150,180)}/${getRandomInt(150,180)}?${getRandomString()})`;
     }
     if(!imagesOption) {
         if (selectedPerson.src) {
