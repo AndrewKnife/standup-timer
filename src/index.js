@@ -279,7 +279,7 @@ const selectPerson = (personId) => {
         timerWrapperElement.style.backgroundImage = `url(http://placeimg.com/${getRandomInt(150,180)}/${getRandomInt(150,180)}/animals?${getRandomString()})`;
     }
     if (imagesOption === imageValues.corgis) {
-        timerWrapperElement.style.backgroundImage = `url(http://placecorgi.com/${getRandomInt(150,180)}/${getRandomInt(150,180)}?${getRandomString()})`;
+        timerWrapperElement.style.backgroundImage = `url(http://placedog.net/${getRandomInt(150,180)}/${getRandomInt(150,180)}?${getRandomString()})`;
     }
     if(!imagesOption) {
         if (selectedPerson.src) {
