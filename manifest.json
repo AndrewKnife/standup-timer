@@ -1,0 +1,23 @@
+{
+  "name": "Standup Timer",
+  "description": "Take control of your standups!",
+  "version": "0.6.2",
+  "manifest_version": 3,
+  "content_scripts": [{
+    "matches": ["https://*.atlassian.net/*"],
+    "js": ["src/init.js"]
+  },{
+    "matches": ["https://*.atlassian.net/*"],
+    "css": ["src/index.css"]
+  }],
+  "web_accessible_resources": [
+    {
+      "matches": ["https://*.atlassian.net/*"],
+      "resources": ["timer.html"]
+    },
+    {
+      "matches": ["https://*.atlassian.net/*"],
+      "resources": ["src/timer.js"]
+    }
+  ]
+}

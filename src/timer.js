@@ -2,6 +2,7 @@ const TIMER_MODES = {
     manual: "manual",
     auto: "auto"
 };
+
 const USER_ROLES = {
     po: {
         id: "po",
@@ -139,6 +140,8 @@ const peopleList = [
 ];
 // ---------
 
+const controlsWrapper = document.getElementById("controlsWrapper");
+const buttonOptionsElement = document.getElementById("buttonOptions");
 const peopleListElement = document.getElementById("peopleList");
 const timerElement = document.getElementById("timer");
 const buttonNextElement = document.getElementById("buttonNext");
@@ -207,6 +210,7 @@ const controlSound = (secLeft) => {
 }
 
 const startTimer = () => {
+    controlsWrapper.classList.add('hidden')
     inputedTime = Number.parseInt(document.getElementById("timeInput").value);
     selectPerson(0);
     setTimer()
@@ -224,12 +228,23 @@ const startTimer = () => {
     }
 };
 
+const toggleOptions = () => {
+    if (controlsWrapper.classList.contains('hidden')) {
+        controlsWrapper.classList.remove('hidden')
+    } else {
+        controlsWrapper.classList.add('hidden')
+    }
+}
+
 const assignEventListeners = () => {
     buttonNextElement.addEventListener("click", () => {
         selectNextPerson();
     });
     buttonStartElement.addEventListener("click", () => {
         startTimer();
+    });
+    buttonOptionsElement.addEventListener("click", () => {
+        toggleOptions();
     });
     // List element listeners
     let list = document.querySelectorAll("li");
