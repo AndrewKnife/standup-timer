@@ -78,9 +78,9 @@ const beList = [
         role: USER_ROLES.be.id
     },
     {
-        name: "Justinas G",
+        name: "Gintaras Aniulis",
         special: true,
-        src: "https://media.discordapp.net/attachments/855740759064182815/982291449708179466/unknown.png?width=907&height=609",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U03E2LQBZJM-357ba2a6e29d-512",
         role: USER_ROLES.be.id
     },
     {
