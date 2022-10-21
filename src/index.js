@@ -73,6 +73,11 @@ const beList = [
         role: USER_ROLES.be.id
     },
     {
+        name: "Marius M",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U047UEB9DPA-f08a3538e3af-512",
+        role: USER_ROLES.be.id
+    },
+    {
         name: "Antanas K",
         src: "https://ca.slack-edge.com/T3V50P6MN-U02C15PCVEF-4253f19273d1-512",
         role: USER_ROLES.be.id
