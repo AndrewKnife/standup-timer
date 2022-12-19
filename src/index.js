@@ -57,12 +57,16 @@ const qaList = [
         name: "Ieva M",
         src: "https://ca.slack-edge.com/T3V50P6MN-U03HKLJ77M5-f59b45a6ea0f-512",
         role: USER_ROLES.qa.id
+    }, {
+        name: "Dainius U",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U04ER7T7B8T-5561babf3ae3-512",
+        role: USER_ROLES.qa.id
     }
 ]
 const devopsList = [
     {
-        name: "Mindaugas L",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U032ZDV3D3J-6131bfeaa026-512",
+        name: "Evaldas M",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U04DBD1FTC7-3610e75d0a00-512",
         role: USER_ROLES.devops.id
     }
 ]
@@ -83,13 +87,13 @@ const beList = [
         role: USER_ROLES.be.id
     },
     {
-        name: "Gintaras Aniulis",
-        special: true,
+        name: "Gintaras A",
         src: "https://ca.slack-edge.com/T3V50P6MN-U03E2LQBZJM-357ba2a6e29d-512",
         role: USER_ROLES.be.id
     },
     {
         name: "Matas D",
+        special: true,
         src: "https://ca.slack-edge.com/T3V50P6MN-U02B75EKXPY-bb3291c1df7b-512",
         role: USER_ROLES.be.id
     },
