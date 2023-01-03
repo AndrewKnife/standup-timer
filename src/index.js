@@ -39,14 +39,19 @@ const poList = [
         src: "https://ca.slack-edge.com/T3V50P6MN-U01JM1WK7CL-fe9d4e25a0b9-512",
         role: USER_ROLES.po.id
     }, {
-        name: "Tomas P",
-        src: "https://ca.slack-edge.com/T3V50P6MN-U03APBR882K-05b07585b245-512",
+        name: "Egle G",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U04EQHA42A1-81572d1ed831-512",
         role: USER_ROLES.po.id
     }, {
         name: "Kateryna S",
         src: "https://ca.slack-edge.com/T3V50P6MN-U02L7J93J31-2ac80b461a65-512",
         role: USER_ROLES.po.id
     },
+    {
+        name: "Anastassia K",
+        src: "https://ca.slack-edge.com/T3V50P6MN-U04ELTH7E5U-277d5adf4f59-512",
+        role: USER_ROLES.po.id
+    }
 ]
 const qaList = [
     {
@@ -165,6 +170,8 @@ const imageValues = {
     cats2: 'cats2',
     corgis: 'corgis',
     animals: 'animals',
+    bears: 'bears',
+    random: 'random',
 }
 
 let timeTracker = USER_TIME;
@@ -289,6 +296,12 @@ const selectPerson = (personId) => {
     }
     if (imagesOption === imageValues.corgis) {
         timerWrapperElement.style.backgroundImage = `url(http://placedog.net/${getRandomInt(150,180)}/${getRandomInt(150,180)}?${getRandomString()})`;
+    }
+    if (imagesOption === imageValues.bears) {
+        timerWrapperElement.style.backgroundImage = `url(https://placebear.com/${getRandomInt(150,180)}/${getRandomInt(150,180)}?${getRandomString()})`;
+    }
+    if (imagesOption === imageValues.random) {
+        timerWrapperElement.style.backgroundImage = `url(https://picsum.photos/${getRandomInt(150,180)}/${getRandomInt(150,180)}?${getRandomString()})`;
     }
     if(!imagesOption) {
         if (selectedPerson.src) {
