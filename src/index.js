@@ -48,7 +48,7 @@ const poList = [
         role: USER_ROLES.po.id
     },
     {
-        name: "Anastassia K",
+        name: "Anastasiia K",
         src: "https://ca.slack-edge.com/T3V50P6MN-U04ELTH7E5U-277d5adf4f59-512",
         role: USER_ROLES.po.id
     }
